@@ -10,8 +10,6 @@ import {Component} from '@angular/core';
   <ul>
     <li *ngFor='let company of companies'>{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}
   </ul>
-  <input #companyName (blur)="addCompany(companyName.value); companyName.value='' ">
-  <button (click)="addCompany(companyName.value)">Create Company</button>
   `
 })
 export class AppComponent {
