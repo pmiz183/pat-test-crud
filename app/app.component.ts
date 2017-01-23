@@ -25,7 +25,7 @@ import {Component} from '@angular/core';
   template:`
   <h1>Angular2 CRUD Demo App</h1>
   <h2>Keylog companies</h2>
-  <p> <button (click)="toggleFormView()">Show/Hide Create Company Form</button> <button (click)="deleteCompany(company)">Delete Selected Company</button> <button (click)="closeUpdateView(); ">Close Company Update Form</button></p>
+  <p> <button (click)="toggleFormView(); closeUpdateView();">Show/Hide Create Company Form</button> <button (click)="closeUpdateView()">Close Company Update Form</button> <button (click)="deleteCompany(company)">Delete Selected Company</button></p>
   <div *ngIf="selectedCompany">
   <h2>Edit Company: {{selectedCompany.BusinessDisplayName}}</h2>
   Company Id: <input [(ngModel)]="selectedCompany.BusinessId" required/><br />
@@ -59,7 +59,7 @@ import {Component} from '@angular/core';
 
   </div>
   <ul>
-    <li *ngFor='let company of companies' [class.selected]="company === selectedCompany" (click)="onselect(company)"><span class="badge">{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}</span>
+    <li *ngFor='let company of companies' [class.selected]="company === selectedCompany" (click)="onselect(company); this.formView=false;"><span class="badge">{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}</span>
   </ul>
   `
 })
