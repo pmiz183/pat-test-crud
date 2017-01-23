@@ -5,8 +5,8 @@ import {Component} from '@angular/core';
   template:`
   <h1>Angular2 CRUD Demo App</h1>
   <h2>Keylog companies</h2>
-  Company name to delete: <input #dcompanyName (blur)="deleteCompany(dcompanyName.value); dcompanyName.value='' ">
-  <button (click)="deleteCompany(companyName.value)">Delete Company</button>
+  Company name to Edit: <input #companyName (blur)="deleteCompany(companyName.value); companyName.value='' ">
+  <button (click)="deleteCompany(companyName.value)">Delete Company</button><button (click)="deleteCompany(companyName.value)">Delete Company</button>
   <ul>
     <li *ngFor='let company of companies'>{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}
   </ul>
