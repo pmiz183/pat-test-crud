@@ -1,0 +1,26 @@
+[
+	{
+		"BusinessId" : "1",
+		"BusinessTradingName" : "Keylog",
+		"BusinessDescription": "Tag Scan and Go",
+		"BusinessDisplayName": "Keylog",
+		"BusinessNumber": "123456789",
+		"CompanyNumber": "123456789",
+		"BusinessLandline": "80848054",
+		"BusinessFaxNumber": "80848054",
+		"BusinessWebsiteUrl": "https://keylog.com.au",
+		"BusinessContactUsEmail": "info@keylog.com.au"
+	},
+	{
+		"BusinessId" : "1",
+		"BusinessTradingName" : "Log it out",
+		"BusinessDescription": "Tag, log and go",
+		"BusinessDisplayName": "LogItOut",
+		"BusinessNumber": "123456781",
+		"CompanyNumber": "123456781",
+		"BusinessLandline": "80848052",
+		"BusinessFaxNumber": "80848053",
+		"BusinessWebsiteUrl": "https://logitout.com.au",
+		"BusinessContactUsEmail": "info@logitout.com.au"
+	}
+]

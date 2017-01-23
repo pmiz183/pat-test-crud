@@ -29,8 +29,7 @@ export class AppComponent {
   updateView:boolean = false;
   selectedCompany:Company;
 
-
-  companies:any = [
+  companies:any[] = [
       new Company(1, "Keylog", "Tag Scan and Go", "Keylog", "123456789", "123456789", "80848054", "80848054", "https://keylog.com.au", "info@keylog.com.au"),
       new Company(1, "Log it out", "Tag, log and go", "LogItOut", "123456781", "123456781", "80848052", "80848053", "https://logitout.com.au", "info@logitout.com.au")
   ]
@@ -43,7 +42,8 @@ export class AppComponent {
 
   deleteCompany(companyName:any){
     for (var i=0; i < this.companies.length; i++){
-      if (this.companies[i].BusinessTradingName == companyName){
+      if (this.companies[i].BusinessDisplayName == companyName.toString()){
+        this.selectedCompany = null;
         this.companies.splice(i, 1);
         return;
       }

@@ -2,7 +2,7 @@
   <h2>Keylog companies</h2>
   <p> <button (click)="toggleFormView(); closeUpdateView();">Show/Hide Create Company Form</button>
    <!-- <button (click)="closeUpdateView()">Close Company Update Form</button> --> 
-   <button (click)="deleteCompany(company)">Delete Selected Company</button></p>
+   <button (click)="deleteCompany(selectedCompany.BusinessDisplayName)">Delete Selected Company</button></p>
   <div *ngIf="selectedCompany">
   <h2>Edit Company: {{selectedCompany.BusinessDisplayName}}</h2>
   Company Id: <input [(ngModel)]="selectedCompany.BusinessId" required/><br />
