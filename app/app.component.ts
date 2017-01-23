@@ -26,10 +26,9 @@ import {Component} from '@angular/core';
   <h1>Angular2 CRUD Demo App</h1>
   <h2>Keylog companies</h2>
   Company name to Edit: <input #companyName (blur)="deleteCompany(companyName.value); companyName.value='' ">
-  <button (click)="createCompany(companyName.value)">Create Company</button><button (click)="deleteCompany(companyName.value)">Delete Company</button>
+  <button (click)="deleteCompany(company)">Delete Company</button>
   <p> <button (click)="toggleFormView()">Show/Hide Create Company Form</button></p>
   <div *ngIf="formView">
-  <form>
   Company Id: <input #companyId /><br />
   Company Trading Name: <input #companyTradeName required/><br />
   Company Description: <input #companyDescription required/><br />
@@ -40,16 +39,20 @@ import {Component} from '@angular/core';
   Company Fax: <input #companyFaxNumber required/><br />
   Company URL: <input #companyWebsiteUrl required/><br />
   Company Contact Email: <input #companyContactUsEmail required/><br />
-  <button>Create Company</button>
-  </form>
+
+  <button (click)="addCompany(companyId.value, companyTradeName.value, companyDescription.value, companyDisplayName.value, companyBusinessNumber.value, companyNumber.value, companyLandline.value, companyFaxNumber.value, companyWebsiteUrl.value, companyContactUsEmail.value); 
+  companyId.value=''; companyTradeName.value=''; companyDescription.value=''; companyDisplayName.value=''; companyBusinessNumber.value=''; companyNumber.value=''; companyLandline.value=''; companyFaxNumber.value=''; companyWebsiteUrl.value=''; companyContactUsEmail.value=''; 
+  toggleFormView()">Create Company</button>
+  
   </div>
   <ul>
-    <li *ngFor='let company of companies'>{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}
+    <li *ngFor='let company of companies' [class.selected]="company === selectedCompany" (click)="onselect(company)"><span class="badge">{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}</span>
   </ul>
   `
 })
 export class AppComponent {
   formView:boolean = false;
+  updateView:boolean = false;
   selectedCompany:Company;
 
 
@@ -58,9 +61,9 @@ export class AppComponent {
       new Company(1, "Log it out", "Tag, log and go", "LogItOut", "123456781", "123456781", "80848052", "80848053", "https://logitout.com.au", "info@logitout.com.au")
   ]
 
-  addCompany(companyName: string){
+  addCompany(companyId:any, companyName: any, companyDescription:any, companyDisplayName:any, companyBusinessNumber:any, companyNumber:any, companyLandline:any, companyFaxNumber:any, companyWebsiteUrl:any, companyContactUsEmail:any){
     if (companyName){
-      this.companies.push(new Company(1, companyName, companyName, companyName, "123456789", "123456789", "80848054", "80848054", "https://keylog.com.au", "info@keylog.com.au"));
+      this.companies.push(new Company(companyId, companyName, companyDescription, companyDisplayName, companyBusinessNumber, companyNumber, companyLandline, companyFaxNumber, companyWebsiteUrl, companyContactUsEmail));
     }
   }
 
