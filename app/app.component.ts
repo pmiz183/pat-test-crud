@@ -25,10 +25,23 @@ import {Component} from '@angular/core';
   template:`
   <h1>Angular2 CRUD Demo App</h1>
   <h2>Keylog companies</h2>
-  Company name to Edit: <input #companyName (blur)="deleteCompany(companyName.value); companyName.value='' ">
-  <button (click)="deleteCompany(company)">Delete Company</button>
-  <p> <button (click)="toggleFormView()">Show/Hide Create Company Form</button></p>
+  <p> <button (click)="toggleFormView()">Show/Hide Create Company Form</button> <button (click)="deleteCompany(company)">Delete Selected Company</button></p>
+  <div *ngIf="selectedCompany">
+  <h2>Edit Company: {{selectedCompany.BusinessDisplayName}}</h2>
+  Company Id: <input [(ngModel)]="selectedCompany.BusinessId" required/><br />
+  Company Trading Name: <input [(ngModel)]="selectedCompany.BusinessTradingName" required/><br />
+  Company Description: <input [(ngModel)]="selectedCompany.BusinessDescription" required/><br />
+  Company Display Name: <input [(ngModel)]="selectedCompany.BusinessDisplayName" required/><br />
+  Company Business Number: <input [(ngModel)]="selectedCompany.BusinessNumber" required/><br />
+  Company Number: <input [(ngModel)]="selectedCompany.CompanyNumber" required/><br />
+  Company Landline: <input [(ngModel)]="selectedCompany.BusinessLandline" required/><br />
+  Company Fax: <input [(ngModel)]="selectedCompany.BusinessFaxNumber" required/><br />
+  Company URL: <input [(ngModel)]="selectedCompany.BusinessWebsiteUrl" required/><br />
+  Company Contact Email: <input [(ngModel)]="selectedCompany.BusinessContactUsEmail" required/><br />
+  <p> </p>
+  </div>
   <div *ngIf="formView">
+  <h2>Create New Company</h2>
   Company Id: <input #companyId /><br />
   Company Trading Name: <input #companyTradeName required/><br />
   Company Description: <input #companyDescription required/><br />
@@ -43,7 +56,7 @@ import {Component} from '@angular/core';
   <button (click)="addCompany(companyId.value, companyTradeName.value, companyDescription.value, companyDisplayName.value, companyBusinessNumber.value, companyNumber.value, companyLandline.value, companyFaxNumber.value, companyWebsiteUrl.value, companyContactUsEmail.value); 
   companyId.value=''; companyTradeName.value=''; companyDescription.value=''; companyDisplayName.value=''; companyBusinessNumber.value=''; companyNumber.value=''; companyLandline.value=''; companyFaxNumber.value=''; companyWebsiteUrl.value=''; companyContactUsEmail.value=''; 
   toggleFormView()">Create Company</button>
-  
+
   </div>
   <ul>
     <li *ngFor='let company of companies' [class.selected]="company === selectedCompany" (click)="onselect(company)"><span class="badge">{{company.BusinessTradingName}}, {{company.BusinessDescription}}, {{company.BusinessDisplayName}}, {{company.BusinessNumber}}, {{company.CompanyNumber}}, {{company.BusinessLandline}}, {{company.BusinessFaxNumber}}, {{company.BusinessWebsiteUrl}}, {{company.BusinessContactUsEmail}}</span>
@@ -78,6 +91,10 @@ export class AppComponent {
 
   toggleFormView(){
     this.formView = !this.formView;
+  }
+
+  toggleUpdateView(){
+    this.updateView = !this.updateView;
   }
 
   onselect(company: Company){
