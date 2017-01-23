@@ -25,7 +25,7 @@ import {Component} from '@angular/core';
   template:`
   <h1>Angular2 CRUD Demo App</h1>
   <h2>Keylog companies</h2>
-  <p> <button (click)="toggleFormView()">Show/Hide Create Company Form</button> <button (click)="deleteCompany(company)">Delete Selected Company</button></p>
+  <p> <button (click)="toggleFormView()">Show/Hide Create Company Form</button> <button (click)="deleteCompany(company)">Delete Selected Company</button> <button (click)="closeUpdateView(); ">Close Company Update Form</button></p>
   <div *ngIf="selectedCompany">
   <h2>Edit Company: {{selectedCompany.BusinessDisplayName}}</h2>
   Company Id: <input [(ngModel)]="selectedCompany.BusinessId" required/><br />
@@ -95,6 +95,11 @@ export class AppComponent {
 
   toggleUpdateView(){
     this.updateView = !this.updateView;
+  }
+
+  closeUpdateView(){
+    this.updateView = false;
+    this.selectedCompany = null;
   }
 
   onselect(company: Company){
